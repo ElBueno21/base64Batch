@@ -47,11 +47,11 @@ if "%choice%"=="1" (
 echo Encoding: !selectedFile!
 set "selectedPath=%~dp1"
 if not exist "!selectedPath!encoded.txt" (
-    echo Creating decoded.txt in the same directory as the selected file.
+    echo Creating encoded.txt in the same directory as the selected file.
 	del "!selectedPath!tmp.b64"
 	certutil -encode "!selectedFile!" tmp.b64 && findstr /v /c:- tmp.b64 > encoded.txt
 ) else (
-    echo A decoded.txt file already exists in the same directory.
+    echo A encoded.txt file already exists in the same directory.
     choice /C YN /M "Would you like to overwrite that file? (Y/N)"
     if errorlevel 2 (
         echo File not overwritten.
